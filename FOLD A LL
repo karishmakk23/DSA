@@ -1,0 +1,22 @@
+//FOLD A LL//
+
+static Node fleft;
+public static void fold(Linkedlist l){
+        fleft = l.head;
+        foldHelper(l, l.head, 0);
+}
+public static void foldHelper(Linkedlist l, Node right, int counter){
+        if(right == null){
+            return;
+        }
+        foldHelper(l, right.next, counter + 1);
+        if(counter > l.size / 2){
+            right.next = fleft.next;
+            fleft.next = right;
+            fleft = right.next;
+        }
+        else if(counter == l.size / 2 ){
+            l.tail = right;
+            l.tail.next = null;
+        }
+}
