@@ -1,0 +1,49 @@
+//ADD TWO LL//
+
+public static <Integer> Linkedlist add(Linkedlist l1, Linkedlist l2, Linkedlist l, int diff){
+         Node node1 = l1.head; Node node2 = l2.head; Node node3 = l.head;
+         if(l1.size > l2.size ){
+             for(int i = 0; i < diff; i++){
+                 node1 = node1.next;
+             }
+         }
+        else if(l1.size < l2.size ){
+            for(int i = 0; i < diff; i++){
+                node2 = node2.next;
+            }
+        }
+        System.out.println("data in node1 " + node1.data);
+        System.out.println("data in node2 " + node2.data);
+        int result = addHelper(node1, node2, l);
+        int first_val = 0;
+        if(l1.size > l2. size){
+             first_val =smallHelp(l1.head, l, result, diff, 0);
+
+        }
+        else if(l1.size < l2. size){
+            first_val = smallHelp(l2.head,l, result, diff, 0);
+        }
+        addFirst(l, first_val);
+        return l;
+  }
+  public static int addHelper(Node node1, Node node2, Linkedlist l){
+        if(node1.next == null){
+           int val1 = node1.data + node2.data;
+           addFirst(l, val1 % 10);
+           return val1 / 10;
+        }
+        int result = addHelper(node1.next, node2.next, l);
+        int val2 = node1.data + node2.data + result;
+        addFirst(l, val2 % 10);
+        return val2 / 10;
+  }
+  public static int smallHelp(Node exN, Linkedlist reL, int result, int diff, int count){
+        if(count == diff){
+            return 0;
+        }
+        smallHelp(exN.next,reL, result, diff, count + 1);
+        int value2 = exN.data + result;
+        addFirst(reL, value2 % 10);
+        result = value2 / 10;
+        return result;
+  }
