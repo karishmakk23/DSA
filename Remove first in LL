@@ -1,0 +1,34 @@
+//REMOVE FIRST IN LL//
+
+public static void KReverse(Linkedlist l, int k){
+        Linkedlist prev = null;
+        while(l.size > 0){
+            Linkedlist curr = new Linkedlist<>();
+            if(k <= l.size){
+               for(int i = 1; i <= k; i++) {
+                int value = getFirst(l);
+                removeFirst(l);
+                addFirst(curr,value);
+               }
+            }
+            else{
+                int os = l.size;
+                for(int i = 1; i <= os; i++){
+                    int value = getFirst(l);
+                    removeFirst(l);
+                    curr.addLast(value);
+                }
+            }
+            if(prev == null){
+                prev = curr;
+            }
+            else{
+                prev.tail.next = curr.head;
+                prev.tail = curr.tail;
+                prev.size += curr.size;
+            }
+        }
+        l.head = prev.head;
+        l.tail = prev.tail;
+        l.size = prev.size;
+ }
