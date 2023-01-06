@@ -1,0 +1,21 @@
+//MERGE SORT A LL//
+
+public static <Integer> Linkedlist mergeTwoSorted(Linkedlist ll1, Linkedlist ll2){
+        Linkedlist mergeSorted = new Linkedlist <> ();
+        Node node1 = ll1.head;  Node node2 = ll2.head;
+        while(node1 != null || node2 != null){
+            if(node2 == null){
+                mergeSorted.addLast(node1.data); node1 = node1.next;
+            }
+            else if(node1 == null){
+                mergeSorted.addLast(node2.data); node2 = node2.next;
+            }
+            else if(node1.data < node2.data){
+                mergeSorted.addLast(node1.data); node1 = node1.next;
+            }
+            else{
+                mergeSorted.addLast(node2.data); node2 = node2.next;
+            }
+        }
+        return mergeSorted;
+}
