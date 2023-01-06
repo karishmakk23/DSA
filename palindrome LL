@@ -1,0 +1,24 @@
+//IS A LL PALINDROME?//
+
+static Node palleft; static int value = 0;
+ 
+  public static boolean alt_paLindrome(Linkedlist l){
+        left = l.head;
+        return alt_paLindromeHelper(l, l.head);
+  }
+    public static boolean alt_paLindromeHelper(Linkedlist l, Node right){
+        if(right == null){
+            return true;
+        }
+        boolean pres = alt_paLindromeHelper(l, right.next);
+        if(pres == false){
+            return false;
+        }
+        else if(left.data != right.data){
+            return false;
+        }
+        else{
+            left = left.next;
+            return true;
+        }
+  }
