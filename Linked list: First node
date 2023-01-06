@@ -1,0 +1,15 @@
+//ADD FIRST NODE IN LL//
+
+public static void addFirst(Linkedlist list, int value) {
+        Node first = new Node();
+        first.data = value;
+        if (list.size == 0){
+            list.head = first;
+            list.tail = first;
+        }
+        else{
+            first.next = list.head;
+            list.head = first;
+        }
+        list.size ++;
+}
