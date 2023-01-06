@@ -1,0 +1,11 @@
+//FIND THE MIDDLE OF A LL//
+
+public static int mid(Linkedlist l){
+        Node fast = l.head;
+        Node slow = l.head;
+        while(fast.next != null && fast.next.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow.data;
+}
