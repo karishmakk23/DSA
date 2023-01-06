@@ -1,0 +1,25 @@
+//ADD AT INDEX IN LL//
+
+public static void addatIndex(Linkedlist list, int index, int value){
+        Node insert = new Node();
+        insert.data = value;
+        if(list.size == 0){
+            insert.next = null;
+            list.head = insert;
+            list.tail = insert;
+        }
+        else if(index > list.size || index < 0){
+            System.out.println("Invalid argument");
+        }
+        else if(index == list.size){
+            addLast(list, value);
+        }
+        Node chain = list.head;
+        for(int i = 0; i < index - 1; i++){
+            chain = chain.next;
+        }
+        insert.next = chain.next;
+        chain.next = insert;
+
+        list.size ++;
+    }
